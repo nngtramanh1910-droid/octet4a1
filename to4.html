@@ -1,0 +1,1616 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #f4f7f0;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: #3a4a35;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .ct-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 36px;
+    background: rgba(244,247,240,0.85);
+    border-bottom: 1px solid #dde8d5;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .ct-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #3a4a35;
+    font-style: italic;
+  }
+
+  .ct-logo span {
+    font-style: normal;
+    font-size: 13px;
+    color: #7ea86e;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 400;
+    margin-left: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .ct-nav-links {
+    display: flex;
+    gap: 6px;
+    list-style: none;
+  }
+
+  .nav-btn {
+    background: none;
+    border: 1px solid transparent;
+    padding: 7px 18px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    color: #6a8260;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    background: #e8f0e0;
+    border-color: #c5d9b5;
+    color: #3a4a35;
+  }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== HOME ===== */
+  .home-hero {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: clamp(20px, 5vw, 60px);
+  }
+
+  .nature-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .leaf {
+    position: absolute;
+    border-radius: 50% 0 50% 0;
+    opacity: 0.25;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 520px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7ea86e;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 7vw, 52px);
+    color: #2d3d28;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: #5a7850;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: #6a8260;
+    line-height: 1.8;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-green {
+    background: #7ea86e;
+    color: #f4f7f0;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 24px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .btn-green:hover {
+    background: #5a7850;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-green {
+    background: transparent;
+    color: #5a7850;
+    border: 1px solid #b5cfa5;
+    padding: 12px 28px;
+    border-radius: 24px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 400;
+  }
+
+  .btn-outline-green:hover {
+    background: #e8f0e0;
+    transform: translateY(-2px);
+  }
+
+  .home-spirit {
+    padding: 40px 36px;
+    background: #edf2e6;
+    border-top: 1px solid #dde8d5;
+    border-bottom: 1px solid #dde8d5;
+  }
+
+  .spirit-text {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .spirit-text blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #3a4a35;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .spirit-text cite {
+    font-size: 12px;
+    color: #7ea86e;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Members preview on home */
+  .home-members {
+    padding: 48px 36px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7ea86e;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .member-chips {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .member-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #dde8d5;
+    border-radius: 40px;
+    padding: 8px 16px 8px 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .member-chip:hover {
+    border-color: #b5cfa5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(90,120,80,0.1);
+  }
+
+  .chip-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .chip-name {
+    font-size: 14px;
+    color: #3a4a35;
+    font-weight: 400;
+  }
+
+  /* ===== ALBUM ===== */
+  .album-page {
+    padding: 40px 36px;
+  }
+
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .album-card {
+    background: #fff;
+    border: 1px solid #dde8d5;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.35s ease;
+  }
+
+  .album-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(90,120,80,0.12);
+    border-color: #b5cfa5;
+  }
+
+  .album-cover {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .album-cover-art {
+    position: absolute;
+    inset: 0;
+    opacity: 0.7;
+  }
+
+  .album-info {
+    padding: 14px 16px;
+  }
+
+  .album-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2d3d28;
+    margin-bottom: 4px;
+  }
+
+  .album-meta {
+    font-size: 12px;
+    color: #7ea86e;
+  }
+
+  /* Gallery overlay */
+  .gallery-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    min-height: 100%;
+    background: rgba(30, 42, 26, 0.96);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px;
+  }
+
+  .gallery-overlay.open {
+    display: flex;
+  }
+
+  .gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 28px;
+  }
+
+  .gallery-title-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #c8dbb8;
+    font-style: italic;
+  }
+
+  .gallery-close {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #c8dbb8;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .gallery-close:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .gallery-main {
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+  }
+
+  .gallery-img-wrap {
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+    margin-bottom: 20px;
+  }
+
+  .gallery-img-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .gallery-caption {
+    text-align: center;
+    font-size: 13px;
+    color: #7ea86e;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .gallery-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .gal-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #c8dbb8;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .gal-btn:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .gal-counter {
+    font-size: 12px;
+    color: #5a7850;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .gallery-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .gdot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .gdot.active {
+    background: #7ea86e;
+    transform: scale(1.3);
+  }
+
+  /* ===== MEMBERS ===== */
+  .members-page {
+    padding: 40px 36px;
+  }
+
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .member-card {
+    background: #fff;
+    border: 1px solid #dde8d5;
+    border-radius: 20px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.35s ease;
+  }
+
+  .member-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(90,120,80,0.12);
+    border-color: #b5cfa5;
+  }
+
+  .member-av {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 auto 12px;
+    position: relative;
+  }
+
+  .member-av-ring {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid;
+    opacity: 0.3;
+  }
+
+  .member-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #2d3d28;
+    margin-bottom: 6px;
+  }
+
+  .member-role {
+    font-size: 12px;
+    color: #7ea86e;
+    margin-bottom: 12px;
+  }
+
+  .member-bio {
+    font-size: 12px;
+    color: #8a9e80;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* Member detail page */
+  .member-detail {
+    display: none;
+    padding: 0;
+  }
+
+  .member-detail.open {
+    display: block;
+  }
+
+  .detail-hero {
+    background: linear-gradient(180deg, #e8f0e0 0%, #f4f7f0 100%);
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #dde8d5;
+  }
+
+  .detail-av {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .detail-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #2d3d28;
+    margin-bottom: 4px;
+  }
+
+  .detail-info p {
+    font-size: 13px;
+    color: #7ea86e;
+  }
+
+  .detail-back {
+    margin-left: auto;
+    background: none;
+    border: 1px solid #b5cfa5;
+    color: #5a7850;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .detail-back:hover {
+    background: #e8f0e0;
+  }
+
+  .detail-body {
+    padding: 32px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .detail-section {
+    background: #fff;
+    border: 1px solid #dde8d5;
+    border-radius: 16px;
+    padding: 22px;
+  }
+
+  .detail-section-title {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7ea86e;
+    margin-bottom: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Decor garden */
+ .garden {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+  min-height: 120px;
+}
+
+ .garden-item {
+  aspect-ratio: 1;
+  min-width: 0;
+  background: #f4f7f0;
+  border: 1px dashed #c5d9b5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+  .garden-item:hover {
+    transform: scale(1.1) rotate(-3deg);
+  }
+
+  .garden-item.empty {
+    opacity: 0.3;
+    font-size: 16px;
+    color: #b5cfa5;
+  }
+
+  /* Diary */
+  .diary-entry {
+    background: #f9fbf6;
+    border: 1px solid #e2ecd8;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+
+  .diary-ts {
+    font-size: 11px;
+    color: #7ea86e;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .diary-mood {
+    font-size: 14px;
+  }
+
+  .diary-text {
+    font-size: 13px;
+    color: #3a4a35;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .diary-compose {
+    margin-top: 12px;
+  }
+
+  .diary-input {
+    width: 100%;
+    background: #f4f7f0;
+    border: 1px solid #dde8d5;
+    border-radius: 10px;
+    padding: 12px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    color: #3a4a35;
+    resize: none;
+    outline: none;
+    min-height: 80px;
+    transition: border-color 0.3s;
+  }
+
+  .diary-input:focus {
+    border-color: #b5cfa5;
+  }
+
+  .diary-compose-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .mood-pills {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .mood-pill {
+    background: #f4f7f0;
+    border: 1px solid #dde8d5;
+    border-radius: 14px;
+    padding: 3px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #6a8260;
+  }
+
+  .mood-pill:hover, .mood-pill.selected {
+    background: #e8f0e0;
+    border-color: #b5cfa5;
+    color: #3a4a35;
+  }
+
+  .save-btn {
+    background: #7ea86e;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 14px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+
+  .save-btn:hover {
+    background: #5a7850;
+  }
+
+  .save-indicator {
+    font-size: 11px;
+    color: #7ea86e;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .save-indicator.show {
+    opacity: 1;
+  }
+
+  /* Personal photos */
+  .personal-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .personal-photo {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+
+  .personal-photo:hover {
+    transform: scale(1.05);
+  }
+
+  .personal-photo.upload-slot {
+    background: #f4f7f0;
+    border: 1.5px dashed #c5d9b5;
+    font-size: 20px;
+    color: #b5cfa5;
+    cursor: pointer;
+  }
+
+  .personal-photo.upload-slot:hover {
+    border-color: #7ea86e;
+    color: #7ea86e;
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 600px) {
+    .detail-body { grid-template-columns: 1fr; }
+    .album-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px) {
+
+  .hero-title {
+    font-size: 42px;
+  }
+
+  .detail-body {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .ct-nav {
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .ct-nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    flex: 1;
+    min-width: 90px;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .home-hero,
+  .album-page,
+  .members-page,
+  .detail-body,
+  .home-members,
+  .home-spirit {
+    padding: 20px;
+  }
+
+  .detail-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .detail-back {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+
+  .members-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .garden {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.personal-photos {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+  .album-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-overlay {
+    padding: 16px;
+  }
+
+  .gallery-main {
+    max-width: 100%;
+  }
+
+  .gallery-nav {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .gal-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .members-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 30px;
+  }
+
+  .btn-green,
+  .btn-outline-green {
+    width: 100%;
+  }
+
+}
+</style>
+
+
+<div id="app-root" style="position:relative; min-height: 800px; overflow: hidden;">
+
+  <nav class="ct-nav">
+    <div class="ct-logo">OCTET4 A1 <span>khu vườn của chúng mình</span></div>
+    <ul class="ct-nav-links">
+      <li><button class="nav-btn active" onclick="showPage('home')">Tổ</button></li>
+      <li><button class="nav-btn" onclick="showPage('album')">Album</button></li>
+      <li><button class="nav-btn" onclick="showPage('members')">Thành viên</button></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+  <div class="page active" id="page-home">
+    <div class="home-hero">
+      <div class="nature-bg" id="nature-bg"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">🌿 2025-2028</p>
+        <h1 class="hero-title"><em>OCTET4</em> A1</h1>
+        <p class="hero-sub">Chỉ là vô tình ngồi chung một tổ vào năm lớp 10<br>Mà sự vô tình ấy đã tạo thành sự kết nối, thấu hiểu và yêu thương.</p>
+        <div class="hero-buttons">
+          <button class="btn-green" onclick="showPage('album')">Xem Album ký ức</button>
+          <button class="btn-outline-green" onclick="showPage('members')">Góc của thành viên</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-spirit">
+      <div class="spirit-text">
+        <blockquote>"Những nơi ta trân trọng nhất không phải vì chúng đẹp hay to lớn, mà vì ở đó, ta từng được là chính mình."</blockquote>
+        <cite>tinh thần của tổ</cite>
+      </div>
+    </div>
+
+    <div class="home-members">
+      <p class="section-label">thành viên trong tổ</p>
+      <div class="member-chips" id="home-chips"></div>
+    </div>
+  </div>
+
+  <!-- ALBUM -->
+  <div class="page" id="page-album">
+    <div class="album-page">
+      <p class="section-label">album ký ức chung</p>
+      <div class="album-grid" id="album-grid"></div>
+    </div>
+
+    <!-- Gallery overlay inside flow -->
+    <div class="gallery-overlay" id="gallery-overlay">
+      <div class="gallery-header">
+        <span class="gallery-title-text" id="gallery-title-text"></span>
+        <button class="gallery-close" onclick="closeGallery()">✕</button>
+      </div>
+      <div class="gallery-main">
+        <div class="gallery-img-wrap" id="gallery-img-wrap">
+          <div class="gallery-img-inner" id="gallery-img-inner"></div>
+        </div>
+        <p class="gallery-caption" id="gallery-caption"></p>
+        <div class="gallery-nav">
+          <button class="gal-btn" onclick="galleryNav(-1)">← trước</button>
+          <span class="gal-counter" id="gallery-counter"></span>
+          <button class="gal-btn" onclick="galleryNav(1)">tiếp →</button>
+        </div>
+        <div class="gallery-dots" id="gallery-dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMBERS LIST -->
+  <div class="page" id="page-members">
+    <div class="members-page" id="members-list-view">
+      <p class="section-label">khu vườn của từng người</p>
+      <div class="members-grid" id="members-grid"></div>
+    </div>
+
+    <!-- Member detail -->
+    <div class="member-detail" id="member-detail">
+      <div class="detail-hero">
+        <div class="detail-av" id="detail-av"></div>
+        <div class="detail-info">
+          <h2 id="detail-name"></h2>
+          <p id="detail-bio"></p>
+        </div>
+        <button class="detail-back" onclick="closeMemberDetail()">← quay lại</button>
+      </div>
+      <div class="detail-body">
+        <div>
+          <div class="detail-section" style="margin-bottom:20px">
+            <div class="detail-section-title"><i class="ti ti-leaf" aria-hidden="true"></i> góc vườn</div>
+            <div class="garden" id="detail-garden"></div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-section-title"><i class="ti ti-photo" aria-hidden="true"></i> ảnh cá nhân</div>
+            <div class="personal-photos" id="detail-photos"></div>
+          </div>
+        </div>
+        <div>
+          <div class="detail-section">
+            <div class="detail-section-title" style="justify-content:space-between">
+              <span><i class="ti ti-book" aria-hidden="true"></i> nhật ký</span>
+              <span class="save-indicator" id="save-indicator">đã lưu ✓</span>
+            </div>
+            <div id="diary-entries"></div>
+            <div class="diary-compose">
+<textarea class="diary-input"
+id="diary-input"
+placeholder="Hôm nay mình muốn ghi lại..."
+rows="3"
+onfocus="scrollDiaryIntoView()"></textarea>
+              <div class="diary-compose-row">
+                <div class="mood-pills">
+                  <span class="mood-pill" onclick="selectMood(this,'🌤')">🌤 bình thường</span>
+                  <span class="mood-pill" onclick="selectMood(this,'🌿')">🌿 bình yên</span>
+                  <span class="mood-pill" onclick="selectMood(this,'🌧')">🌧 buồn nhẹ</span>
+                </div>
+                <button class="save-btn" onclick="saveDiaryEntry()">Lưu</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="module">
+  import { getAnalytics } 
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import {getDatabase, ref, push, onValue, query, orderByChild, set}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCXUWOPuLeoJmE5yrtvfQ0KGQhu85rZnOk",
+    authDomain: "octet4a1.firebaseapp.com",
+    projectId: "octet4a1",
+    storageBucket: "octet4a1.firebasestorage.app",
+    messagingSenderId: "695267026175",
+    appId: "1:695267026175:web:9f055ab7559d326d8dd8ca",
+    measurementId: "G-C2J7TLZTNB"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getDatabase(app);
+
+const GARDEN_ITEMS = [
+  '📚','🎧','💻','🎨','📷',
+  '🎮','🌱','🧠','🎬','☕'
+];
+
+const MEMBERS = [
+  { id: 1, name: 'Trâm Anh', role: 'Tổ trưởng', bio: 'thích đọc sách và code', color: '#d4a373', initials: 'A',garden: [], photos: [] },
+  { id: 2, name: 'Minh Anh', role: 'Tổ viên', bio: 'chưa có bio', color: '#ccd5ae', initials: 'A', garden: [], photos: [] },
+  { id: 3, name: 'Tường Lam', role: 'Tổ viên', bio: 'chưa có bio', color: '#84a98c', initials: 'L', garden: [], photos: [] },
+  { id: 4, name: 'Phương Thảo', role: 'Tổ viên', bio: 'chưa có bio', color: '#a4c3b2', initials: 'T', garden: [], photos: [] },
+  { id: 5, name: 'Ngọc Tiền', role: 'Tổ viên', bio: 'chưa có bio', color: '#e9c46a', initials: 'T', garden: [], photos: [] },
+  { id: 6, name: 'Bích Trâm', role: 'Tổ viên', bio: 'chưa có bio', color: '#cdb4db', initials: 'T', garden: [], photos: [] },
+  { id: 7, name: 'Kim Tuyền', role: 'Tổ viên', bio: 'chưa có bio', color: '#90caf9', initials: 'T', garden: [], photos: [] },
+  { id: 8, name: 'Hoàng Yến', role: 'Tổ viên', bio: 'chưa có bio', color: '#f4a261', initials: 'Y', garden: [], photos: [] },
+];
+
+const ALBUMS = [
+  {
+    id: 1,
+    title: 'Chuyến đi xem phim tại Vincom',
+    date: 'ngày 23 tháng 05 · 2026',
+    bg: '#e8f0e0',
+    cover: 'https://i.pinimg.com/736x/4c/42/99/4c4299b74a72c2209f623b6f4ba1e0fa.jpg', // ảnh bìa
+    items: [
+      {
+        image: 'https://i.pinimg.com/736x/8c/54/e6/8c54e6892924470ba02f99bb3c3c8078.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/fe/9e/0c/fe9e0caa41e57f86395df3826c1f35c0.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/4c/42/99/4c4299b74a72c2209f623b6f4ba1e0fa.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/3a/77/12/3a771297165e0870e53a627f285d7341.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/6f/88/b5/6f88b5da26b9635308a976bb99ca5a3d.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/b6/db/c3/b6dbc39d952a8d7995bdad84a8a1e112.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/c0/d6/7f/c0d67f6bdd17ab999cfc7a628c0030e9.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/5c/24/0d/5c240d9fa05a9fd6734c54fcb33c169c.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/29/5f/ba/295fba0ace272d2be98b11b3f67e4eae.jpg',
+      },
+      {
+        image: 'https://i.pinimg.com/736x/8d/33/a2/8d33a2d2980f2050e384080c8409fc32.jpg',
+      }
+    ]
+  }
+];
+
+let currentPage = 'home';
+let currentAlbum = null;
+let currentPhotoIdx = 0;
+let currentMember = null;
+let selectedMoodEl = null;
+let unsubscribeDiary = null;
+let selectedMood = '🌿';
+
+function showPage(p) {
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('page-' + p).classList.add('active');
+  document.querySelectorAll('.nav-btn')[['home','album','members'].indexOf(p)].classList.add('active');
+  currentPage = p;
+  if (p === 'members') {
+    document.getElementById('members-list-view').style.display = '';
+    document.getElementById('member-detail').classList.remove('open');
+  }
+  closeGallery();
+}
+
+function buildNatureBg() {
+  const bg = document.getElementById('nature-bg');
+  const colors = ['#c8e0b8','#a8d098','#d8eecc','#b8d8a0','#e0f0d0'];
+  const count = 14;
+  for (let i = 0; i < count; i++) {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    const size = 60 + Math.random() * 120;
+    leaf.style.cssText = `
+      width:${size}px; height:${size*0.6}px;
+      background:${colors[i%colors.length]};
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      transform: rotate(${Math.random()*360}deg);
+      border-radius: ${40+Math.random()*20}% ${20+Math.random()*20}% ${40+Math.random()*20}% ${20+Math.random()*20}%;
+    `;
+    bg.appendChild(leaf);
+  }
+}
+
+function buildHomeChips() {
+  const c = document.getElementById('home-chips');
+  c.innerHTML = '';
+  MEMBERS.forEach(m => {
+    const chip = document.createElement('div');
+    chip.className = 'member-chip';
+    chip.onclick = () => { showPage('members'); openMemberDetail(m); };
+    chip.innerHTML = `
+      <div class="chip-avatar" style="background:${m.color}">${m.initials}</div>
+      <span class="chip-name">${m.name}</span>
+    `;
+    c.appendChild(chip);
+  });
+}
+
+function buildAlbumGrid() {
+  const g = document.getElementById('album-grid');
+  g.innerHTML = '';
+
+  ALBUMS.forEach(a => {
+    const coverImg = a.cover || 'https://via.placeholder.com/300x200?text=No+Image';
+
+    const card = document.createElement('div');
+    card.className = 'album-card';
+    card.onclick = () => openGallery(a);
+
+    card.innerHTML = `
+      <div class="album-cover">
+        <img src="${coverImg}" onerror="this.src='https://via.placeholder.com/300x200?text=Error'" 
+        style="width:100%; height:100%; object-fit:cover;">
+      </div>
+
+      <div class="album-info">
+        <div class="album-title">${a.title}</div>
+        <div class="album-meta">${a.date} · ${a.items.length} ảnh</div>
+      </div>
+    `;
+
+    g.appendChild(card);
+  });
+}
+
+function openGallery(album) {
+  currentAlbum = album;
+  currentPhotoIdx = 0;
+  const ov = document.getElementById('gallery-overlay');
+  ov.classList.add('open');
+  document.getElementById('gallery-title-text').textContent = album.title;
+  renderGalleryPhoto();
+  buildGalleryDots();
+}
+
+function closeGallery() {
+  document.getElementById('gallery-overlay').classList.remove('open');
+  currentAlbum = null;
+}
+
+function renderGalleryPhoto() {
+  if (!currentAlbum) return;
+
+  const photo = currentAlbum.items[currentPhotoIdx];
+  const wrap = document.getElementById('gallery-img-wrap');
+  const inner = document.getElementById('gallery-img-inner');
+
+  wrap.style.opacity = '0';
+
+  setTimeout(() => {
+    const imgSrc = photo?.image || 'https://via.placeholder.com/600x400?text=No+Image';
+
+    inner.innerHTML = `
+      <img src="${imgSrc}" 
+        onerror="this.src='https://via.placeholder.com/600x400?text=Error'"
+        style="width:100%; height:100%; object-fit:cover; border-radius:16px;">
+    `;
+
+    document.getElementById('gallery-caption').textContent =
+      photo?.caption || '';
+
+    const total = currentAlbum.items.length;
+    document.getElementById('gallery-counter').textContent =
+      `${currentPhotoIdx + 1} / ${total}`;
+
+    wrap.style.opacity = '1';
+
+    document.querySelectorAll('.gdot')
+      .forEach((d, i) => d.classList.toggle('active', i === currentPhotoIdx));
+
+  }, 150);
+}
+
+function galleryNav(dir) {
+  if (!currentAlbum) return;
+  const total = currentAlbum.items.length;
+  currentPhotoIdx = (currentPhotoIdx + dir + total) % total;
+  renderGalleryPhoto();
+}
+
+function buildGalleryDots() {
+  const dc = document.getElementById('gallery-dots');
+  dc.innerHTML = '';
+  currentAlbum.items.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'gdot' + (i===0?' active':'');
+    d.onclick = () => { currentPhotoIdx = i; renderGalleryPhoto(); };
+    dc.appendChild(d);
+  });
+}
+
+function buildMembersGrid() {
+  const g = document.getElementById('members-grid');
+  g.innerHTML = '';
+  MEMBERS.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'member-card';
+    card.onclick = () => openMemberDetail(m);
+    card.innerHTML = `
+      <div class="member-av" style="background:${m.color}">
+        ${m.initials}
+        <div class="member-av-ring" style="border-color:${m.color}"></div>
+      </div>
+      <div class="member-name">${m.name}</div>
+      <div class="member-role">${m.role}</div>
+      <div class="member-bio">${m.bio}</div>
+    `;
+    g.appendChild(card);
+  });
+}
+
+function openMemberDetail(m) {
+  currentMember = m;
+  document.getElementById('members-list-view').style.display = 'none';
+  const det = document.getElementById('member-detail');
+  det.classList.add('open');
+  document.getElementById('detail-av').style.background = m.color;
+  document.getElementById('detail-av').textContent = m.initials;
+  document.getElementById('detail-name').textContent = m.name;
+  document.getElementById('detail-bio').textContent = m.bio;
+
+  const garden = document.getElementById('detail-garden');
+  garden.innerHTML = '';
+  m.garden.forEach((item, index) => {
+
+  const el = document.createElement('div');
+  el.className = 'garden-item';
+  el.textContent = item;
+
+  el.onclick = async () => {
+
+    const ok = confirm(
+      'Xóa sở thích này?'
+    );
+
+    if (!ok) return;
+
+    m.garden.splice(index, 1);
+
+    await set(
+      ref(db, 'gardens/' + m.id),
+      m.garden
+    );
+
+  };
+
+  garden.appendChild(el);
+
+});
+  for (let i = m.garden.length; i < 4; i++) {
+  const el = document.createElement('div');
+  el.className = 'garden-item empty';
+  el.textContent = '+';
+
+  el.onclick = () => {
+    showGardenPicker(m);
+  };
+
+  garden.appendChild(el);
+}
+
+  const photos = document.getElementById('detail-photos');
+  photos.innerHTML = '';
+  m.photos.forEach((ph, i) => {
+    const el = document.createElement('div');
+    el.className = 'personal-photo';
+    el.style.background = `${m.color}22`;
+    el.textContent = ph;
+    photos.appendChild(el);
+  });
+  const upload = document.createElement('div');
+
+upload.className = 'personal-photo upload-slot';
+
+upload.textContent = '+';
+
+upload.title = 'Upload ảnh';
+
+upload.onclick = () => {
+  alert('Tổ trưởng chưa biết cách lập trình chức năng này');
+};
+
+photos.appendChild(upload);
+
+  loadUserDiary();
+}
+
+function closeMemberDetail() {
+  document.getElementById('members-list-view').style.display = '';
+  document.getElementById('member-detail').classList.remove('open');
+  currentMember = null;
+}
+
+function showGardenPicker(member) {
+
+  const picker = document.createElement('div');
+
+  picker.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+  `;
+
+  picker.innerHTML = `
+    <div style="
+      background:#fff;
+      padding:24px;
+      border-radius:20px;
+      width:320px;
+      max-width:90%;
+    ">
+      <h3 style="
+        margin-bottom:16px;
+        font-size:18px;
+        color:#3a4a35;
+      ">
+        Chọn hobby
+      </h3>
+
+      <div id="picker-grid" style="
+        display:grid;
+        grid-template-columns:repeat(5,1fr);
+        gap:10px;
+      "></div>
+
+      <button id="close-picker" style="
+        margin-top:18px;
+        width:100%;
+        padding:10px;
+        border:none;
+        border-radius:12px;
+        background:#7ea86e;
+        color:white;
+        cursor:pointer;
+      ">
+        Đóng
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(picker);
+
+  const grid = picker.querySelector('#picker-grid');
+
+  GARDEN_ITEMS.forEach(item => {
+
+    const btn = document.createElement('button');
+
+    btn.textContent = item;
+
+    btn.style.cssText = `
+      height:52px;
+      border:none;
+      border-radius:12px;
+      font-size:24px;
+      cursor:pointer;
+      background:#f4f7f0;
+    `;
+
+    btn.onclick = async () => {
+
+      if (member.garden.length >= 4) return;
+
+      member.garden.push(item);
+
+      await set(
+  ref(db, 'gardens/' + member.id),
+  member.garden
+);
+
+      openMemberDetail(member);
+
+      picker.remove();
+    };
+
+    grid.appendChild(btn);
+
+  });
+
+  picker.querySelector('#close-picker').onclick = () => {
+    picker.remove();
+  };
+
+}
+
+function selectMood(el, mood) {
+  document.querySelectorAll('.mood-pill').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedMood = mood;
+}
+
+async function saveDiaryEntry() {
+  if (!currentMember) return;
+
+  const input = document.getElementById('diary-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+
+  const diaryRef = ref(db, "diaries");
+
+  await push(diaryRef, {
+    memberId: currentMember.id,
+    text,
+    mood: selectedMood,
+    createdAt: Date.now()
+  });
+
+  selectedMood = '🌿';
+
+  document.querySelectorAll('.mood-pill')
+    .forEach(p => p.classList.remove('selected'));
+}
+
+function loadUserDiary() {
+  if (unsubscribeDiary) unsubscribeDiary();
+  if (!currentMember) return;
+
+  const diaryRef = ref(db, "diaries");
+
+  const q = query(diaryRef, orderByChild("createdAt"));
+
+  unsubscribeDiary = onValue(q, (snapshot) => {
+    const c = document.getElementById('diary-entries');
+    c.innerHTML = '';
+
+    const data = snapshot.val();
+    if (!data) return;
+
+    const entries = Object.values(data)
+      .filter(e => e.memberId === currentMember.id)
+      .sort((a, b) => b.createdAt - a.createdAt);
+
+    entries.forEach(e => {
+      const time = new Date(e.createdAt);
+
+      const el = document.createElement('div');
+      el.className = 'diary-entry';
+
+      el.innerHTML = `
+        <div class="diary-ts">
+          <span>${time.toLocaleString()}</span>
+          <span class="diary-mood">${e.mood}</span>
+        </div>
+        <div class="diary-text">${e.text}</div>
+      `;
+
+      c.appendChild(el);
+    });
+  });
+}
+async function pickGarden(member) {
+const available = GARDEN_ITEMS.filter(
+    item => !member.garden.includes(item)
+  );
+const choice = prompt( 'Chọn hobby:\n\n' + available.join(' ')
+  );
+if (!choice) return;
+ if (!available.includes(choice)) {
+    alert('Không hợp lệ');
+    return;
+  }
+member.garden.push(choice);
+await set(
+  ref(db, 'gardens/' + member.id),
+  member.garden
+);
+openMemberDetail(member);
+}
+
+MEMBERS.forEach(member => {
+
+  const gardenRef = ref(db, 'gardens/' + member.id);
+
+  onValue(gardenRef, snapshot => {
+
+    const data = snapshot.val();
+
+    member.garden = Array.isArray(data)
+      ? data
+      : [];
+
+    if (
+      currentMember &&
+      currentMember.id === member.id
+    ) {
+      openMemberDetail(member);
+    }
+
+  });
+
+});
+function scrollDiaryIntoView() {
+
+  setTimeout(() => {
+
+    document.getElementById('diary-input')
+      .scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+
+  }, 300);
+
+}
+
+window.scrollDiaryIntoView = scrollDiaryIntoView;
+
+buildNatureBg();
+buildHomeChips();
+buildAlbumGrid();
+buildMembersGrid();
+window.showPage = showPage;
+window.openMemberDetail = openMemberDetail;
+window.closeMemberDetail = closeMemberDetail;
+window.galleryNav = galleryNav;
+window.closeGallery = closeGallery;
+window.selectMood = selectMood;
+window.saveDiaryEntry = saveDiaryEntry;
+</script>
